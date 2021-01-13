@@ -9,6 +9,7 @@ import ctypes,sys
 import win32api
 import win32con
 import sys
+import random
 
 def is_admin():
     try:
@@ -66,8 +67,9 @@ if __name__ == '__main__':
                 for j in banlist:
                     if j in str(i):
                         os.kill(i.pid,signal.SIGILL)
-
-            time.sleep(10)
+            t = random.randrange(3,10)
+            time.sleep(t)
+            continue
         
     else:
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
